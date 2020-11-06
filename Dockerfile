@@ -4,7 +4,7 @@ ARG SITE=askbot-site
 ARG ASKBOT=.
 ARG buildtime_db_password=""
 ARG buildtime_db_user=""
-ARG buildtime_db_engine=2
+ARG buildtime_db_engine=sqlite
 ARG buildtime_db_name=db.sqlite
 
 ENV PYTHONUNBUFFERED 1
