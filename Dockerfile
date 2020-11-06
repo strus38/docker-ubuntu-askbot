@@ -21,7 +21,7 @@ ENV UWSGI_CHEAPER 0
 RUN apk add --update --no-cache git py3-cffi \
 	gcc g++ git make unzip mkinitfs kmod mtools squashfs-tools py3-cffi \
 	libffi-dev linux-headers musl-dev libc-dev openssl-dev \
-	python3-dev python3-pip zlib-dev libxml2-dev libxslt-dev jpeg-dev \
+	python3-dev zlib-dev libxml2-dev libxslt-dev jpeg-dev \
         postgresql-dev zlib jpeg libxml2 libxslt postgresql-libs \
     && python -m pip install --upgrade pip \
     && git clone https://github.com/ASKBOT/askbot-devel.git -b master /src \
