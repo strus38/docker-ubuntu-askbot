@@ -21,4 +21,4 @@ RUN sed -i "s/ROOT_URLCONF.*/ROOT_URLCONF = 'urls'/" settings.py
 RUN python3 manage.py migrate --noinput
 RUN python3 manage.py collectstatic --noinput
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8080"]
