@@ -12,10 +12,8 @@ ENV DB_NAME=$buildtime_db_name
 
 RUN apt-get update && apt-get install -y python3-pip git
 # RUN pip3 install askbot
-RUN git clone https://github.com/ASKBOT/askbot-devel.git -b master
 RUN mkdir /site
-
-COPY askbot-devel/* /site/.
+RUN git clone https://github.com/ASKBOT/askbot-devel.git /site -b master
 
 WORKDIR /site
 RUN askbot-setup --dir-name=. -e $DB_ENGINE -d $DB_NAME -u $DB_USER -p $DB_PASSWORD
