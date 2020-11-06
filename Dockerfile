@@ -2,7 +2,7 @@ FROM ubuntu:20.10
 
 ARG buildtime_db_password=""
 ARG buildtime_db_user=""
-ARG buildtime_db_engine=sqlite
+ARG buildtime_db_engine=2
 ARG buildtime_db_name=db.sqlite
 
 ENV DB_PASSWORD=$buildtime_db_password
@@ -15,7 +15,7 @@ RUN pip3 install askbot
 
 RUN mkdir /site
 WORKDIR /site
-RUN askbot-setup --dir-name=. --db-engine=$DB_ENGINE --db-name=$DB_NAME --db-user=$DB_USER --db-password=$DB_PASSWORD
+RUN askbot-setup --dir-name=. -e $DB_ENGINE -d $DB_NAME -u $DB_USER -p $DB_PASSWORD
 RUN sed -i "s/ROOT_URLCONF.*/ROOT_URLCONF = 'urls'/" settings.py
 
 RUN python3 manage.py migrate --noinput
