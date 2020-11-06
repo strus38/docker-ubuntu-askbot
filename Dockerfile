@@ -10,10 +10,13 @@ ENV DB_USER=$buildtime_db_user
 ENV DB_ENGINE=$buildtime_db_engine
 ENV DB_NAME=$buildtime_db_name
 
-RUN apt-get update && apt-get install -y python3-pip
-RUN pip3 install askbot
-
+RUN apt-get update && apt-get install -y python3-pip git
+# RUN pip3 install askbot
+RUN git clone https://github.com/ASKBOT/askbot-devel.git -b master
 RUN mkdir /site
+
+COPY askbot-devel/* /site/.
+
 WORKDIR /site
 RUN askbot-setup --dir-name=. -e $DB_ENGINE -d $DB_NAME -u $DB_USER -p $DB_PASSWORD
 RUN sed -i "s/ROOT_URLCONF.*/ROOT_URLCONF = 'urls'/" settings.py
